@@ -5,10 +5,10 @@ constexpr
 auto factorial(int val, src_loc src = src_loc::current()) -> int
 {
   if ( val < 0 ) {
-    Apology( [&] { return error{ src.function_name(),
+    Apology( [&] { return error{ src.file_name(), src.function_name(),
                                   err_codes::neg_arg, src.line() }; } );
   } else if ( val > 20 ) {
-    Apology( [&] { return error{ src.function_name(),
+    Apology( [&] { return error{ src.file_name(), src.function_name(),
                                   err_codes::big_arg, src.line() }; } );
   }
   if ( val <= 1) return 1;
@@ -22,9 +22,4 @@ auto main() -> int
   std::cout << factorial(3) << '\n';
   std::cout << factorial(21) << '\n'; // line 21
   std::cout << factorial(-1) << '\n';
-  std::cout << factorial(14) << '\n';
-  std::cout << factorial(6) << '\n';
-  std::cout << factorial(8) << '\n';
-  std::cout << factorial(9) << '\n';
-  std::cout << factorial(12) << '\n';
 }
